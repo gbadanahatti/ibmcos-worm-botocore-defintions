@@ -2,11 +2,10 @@ import os
 import json
 import shutil
 
-for root,dirs,files in os.walk("/Library/Python"):
-    if "botocore/data/s3/2006-03-01" in root:
-        if "ibm" not in root:
-            servicePath  = root + "/service-2.json"
-            print "Processing " + servicePath
+
+for root,dirs,files in os.walk("C:\\Program Files\\Amazon\\AWSCLI\\botocore\\data\\s3\\2006-03-01"):
+            servicePath  = root + "\service-2.json"
+            print ("Processing " + servicePath)
             serviceContents = open(servicePath)
             serviceContentsJson = json.load(serviceContents)
 
@@ -369,9 +368,9 @@ for root,dirs,files in os.walk("/Library/Python"):
             #Make a copy of the original service definition and write new service file
             ###
 
-            dstFile = root + "/service-2.json.bak"
-            print "Backing up the old service definition before overwriting.."
+            dstFile = root + "\service-2.json.bak"
+            print ("Backing up the old service definition before overwriting..")
             shutil.copy(servicePath, dstFile)
             f = open(servicePath, 'w')
             f.write(outputContents)
-            print "New WORM service defitions are now available."
+            print ("New WORM service defitions are now available.")

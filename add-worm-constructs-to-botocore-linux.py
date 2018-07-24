@@ -2,7 +2,7 @@ import os
 import json
 import shutil
 
-for root,dirs,files in os.walk("/Library/Python"):
+for root,dirs,files in os.walk("/usr/lib"):
     if "botocore/data/s3/2006-03-01" in root:
         if "ibm" not in root:
             servicePath  = root + "/service-2.json"
