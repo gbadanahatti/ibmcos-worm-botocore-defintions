@@ -6,7 +6,8 @@ This repository contains scripts that will enhance botocore S3 service definitio
 
 1. Download and install the botocore version of your choice. Ensure botocore is available universally.
 2. Clone this repo.
-3. Run the script based on your platform.
+3. Run the script based on your platform. (sudo python add-worm-constructs-to-botocore-macosx.py)
+
 
 After installation, the following functionality will be available:
 
@@ -20,7 +21,7 @@ After installation, the following functionality will be available:
 8. Copy an object with retention.
 9. Get metadata of an object that includes retention.
 
-#AWS CLI
+# AWS CLI
 
 AWS CLI delegates all s3api requests to botcore library. When botocore is enhanced, the above operations also become available on the AWS CLI
  
