@@ -1,12 +1,33 @@
 import os
 import json
 import shutil
+import platform
 
-for root,dirs,files in os.walk("/usr/lib"):
-    if "botocore/data/s3/2006-03-01" in root:
+
+###
+#Detect Platform and set starting paths
+###
+
+platformType = platform.system()
+if platformType == "Darwin":
+    #OSx
+    print ("Detected Mac OSX")
+    startPath = "/Library/Python"
+    defPath = "botocore/data/s3/2006-03-01"
+if platformType == "Linux":
+    print ("Detected Linux")
+    startPath = "/usr/lib"
+    defPath = "botocore/data/s3/2006-03-01"
+if platformType == "Windows":
+    print ("Detected Windows")
+    startPath = "C:\\Program Files\\Amazon\\AWSCLI"
+    defPath = "botocore\\data\\s3\\2006-03-01"
+
+for root,dirs,files in os.walk(startPath):
+    if defPath in root:
         if "ibm" not in root:
             servicePath  = root + "/service-2.json"
-            print "Processing " + servicePath
+            print ("Processing " + servicePath)
             serviceContents = open(servicePath)
             serviceContentsJson = json.load(serviceContents)
 
@@ -370,8 +391,8 @@ for root,dirs,files in os.walk("/usr/lib"):
             ###
 
             dstFile = root + "/service-2.json.bak"
-            print "Backing up the old service definition before overwriting.."
+            print ("Backing up the old service definition before overwriting..")
             shutil.copy(servicePath, dstFile)
             f = open(servicePath, 'w')
             f.write(outputContents)
-            print "New WORM service defitions are now available."
+            print ("New WORM service defitions are now available.")

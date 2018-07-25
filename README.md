@@ -8,13 +8,13 @@ This repository contains scripts that will enhance botocore S3 service definitio
 2. Clone this repo.
 3. Run the script based on your platform. 
 	3a. On your mac
-	  sudo python add-worm-constructs-to-botocore-macosx.py
+	  sudo python add-worm-constructs-to-botocore.py
 	3b. On your windows
 	  Install AWS CLI from msi installer
 	  Run the cmd prompt as an Administrator
-	  python add-worm-costructs-to-botocore-win.py
+	  python add-worm-costructs-to-botocore.py
 	3c. On your linux system
-	  sudo python add-worm-constructs-to-botocore-linux.py
+	  sudo python add-worm-constructs-to-botocore.py
 
 
 After installation, the following functionality will be available:
@@ -103,5 +103,3 @@ aws s3api delete-legal-hold  --endpoint <endpoint>  --bucket <bucketname> --key 
 ### Extending object retention
 aws s3api extend-object-retention  --endpoint <endpoint>  --bucket <bucketname> --key <objectkey> --new-retention-period <newretentionperiod>
 
-# TODO
-1. Consolidate to a single script. Detect the platform and change the starting location of search. 
